@@ -1,15 +1,36 @@
 package com.TINF19A;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AthletesAdmin extends Admin{
-    //TODO: How to override the methods from super?
+    private ArrayList<Athlete> athletesFromDatabase;
+    private ArrayList<Athlete> athletesFromUser;
 
+    public AthletesAdmin(){
 
-    List<Athlete> athletes;
+    }
+
     @Override
-    public ArrayList search() {
+    public void addElement(String userOrDB){
+        // if user
+
+        // if db
+
+    }
+
+    @Override
+    public void removeElement(){
+
+    }
+
+    @Override
+    public ArrayList<Athlete> search() {
         return null;
     }
+
+    public ArrayList<Athlete> getAthletesFromUser(int id){
+        return athletesFromUser;
+    }
+
+
 }

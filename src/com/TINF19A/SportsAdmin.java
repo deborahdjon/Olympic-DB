@@ -4,13 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SportsAdmin extends Admin{
-    List<Sport> dataFrom;
+    ArrayList<Sport> sportsFromDataBase;
+    ArrayList<Sport> sportsFromUser;
+
     public SportsAdmin(){
 
     }
 
     @Override
-    public ArrayList search() {
+    public void removeElement() {
+
+    }
+
+    @Override
+    public ArrayList<Sport> search() {
         return null;
     }
+
+    @Override
+    public void addElement(String userOrDB) {
+        //if user
+
+        //if db
+
+    }
+
 }
