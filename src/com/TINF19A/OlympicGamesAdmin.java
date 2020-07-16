@@ -17,5 +17,5 @@ public class OlympicGamesAdmin extends Admin{
 
     }
 
-    public void deleteol
+    public void deleteol;
 }
