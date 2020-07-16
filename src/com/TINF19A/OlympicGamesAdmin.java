@@ -1,21 +1,34 @@
 package com.TINF19A;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OlympicGamesAdmin extends Admin{
-    private List<OlympicGame> olympicGames;
+    private ArrayList<OlympicGame> olympicGamesFromDatabase;
+    private ArrayList<OlympicGame> olympicGamesFromUser;
+
+    public OlympicGamesAdmin(){
+
+    }
+
+
+
+
     @Override
-    public ArrayList search() {
+    public void removeElement(){
+
+    }
+
+    @Override
+    public ArrayList<OlympicGame> search() {
         return null;
     }
 
-    public List<OlympicGame> getOlympicGames() {
-        return olympicGames;
-    }
-    public void addOlympicGames(){
+    @Override
+    public void addElement(String userOrDB) {
+        //if user
+
+        //if db
 
     }
 
-    public void deleteol;
 }
