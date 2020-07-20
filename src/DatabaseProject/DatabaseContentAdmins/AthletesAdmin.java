@@ -3,36 +3,30 @@ package DatabaseProject.DatabaseContentAdmins;
 import DatabaseProject.DatabaseContent.Athlete;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AthletesAdmin implements AdminInterface {
-    private ArrayList<Athlete> athletesFromDatabase;
-    private ArrayList<Athlete> athletesFromUser;
+    private HashMap<Integer, Athlete> athletes;
 
     public AthletesAdmin(){
 
     }
 
-    @Override
-    public void addElement(String userOrDB){
-        // if user
 
-        // if db
+
+    @Override
+    public void removeElement(String id){
 
     }
 
     @Override
-    public void removeElement(){
-
-    }
-
-    @Override
-    public ArrayList<Athlete> search() {
+    public ArrayList<Athlete> search(String name) {
         return null;
     }
 
-    public ArrayList<Athlete> getAthletesFromUser(int id){
-        return athletesFromUser;
-    }
 
+    public Athlete searchByID(){
+        return null;
+    }
 
 }

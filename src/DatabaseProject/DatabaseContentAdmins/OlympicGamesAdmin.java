@@ -5,8 +5,7 @@ import DatabaseProject.DatabaseContent.OlympicGame;
 import java.util.ArrayList;
 
 public class OlympicGamesAdmin implements AdminInterface {
-    private ArrayList<OlympicGame> olympicGamesFromDatabase;
-    private ArrayList<OlympicGame> olympicGamesFromUser;
+    private ArrayList<OlympicGame> olympicGames;
 
     public OlympicGamesAdmin(){
 
@@ -15,22 +14,16 @@ public class OlympicGamesAdmin implements AdminInterface {
 
 
     @Override
-    public void removeElement(){
+    public void removeElement(String name){
 
     }
 
     @Override
-    public ArrayList<OlympicGame> search() {
+    public ArrayList<OlympicGame> search(String year) {
         return null;
     }
 
-    @Override
-    public void addElement(String userOrDB) {
-        //if user
 
-        //if db
-
-    }
 }
 
 

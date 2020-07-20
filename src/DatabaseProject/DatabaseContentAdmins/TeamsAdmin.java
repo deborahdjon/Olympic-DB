@@ -3,38 +3,24 @@ package DatabaseProject.DatabaseContentAdmins;
 import DatabaseProject.DatabaseContent.Team;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TeamsAdmin implements AdminInterface {
-    private ArrayList<Team> teamsFromDataBase;
-    private ArrayList<Team> teamsFromUser;
-
+    private HashMap<String,Team> teams;
     public TeamsAdmin(){
 
     }
 
-    @Override
-    public void addElement(String userOrDB) {
-        //if user
 
-        //if db
+
+    @Override
+    public void removeElement(String teamName) {
 
     }
 
     @Override
-    public void removeElement() {
-
-    }
-
-    @Override
-    public ArrayList<Team> search() {
+    public ArrayList<Team> search(String teamName) {
         return null;
     }
-
-    public ArrayList<Team> getTeamsFromUser() {
-        return teamsFromUser;
-    }
-
-
-
 
 }
