@@ -14,7 +14,6 @@ public class OlympicGame {
         this.name = name;
         this.city = city;
     }
-
     public void addEvent(Event event){
         this.events.add(event);
     }

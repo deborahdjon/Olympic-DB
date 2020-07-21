@@ -3,10 +3,9 @@ package DatabaseProject.DatabaseContentAdmins;
 import java.util.ArrayList;
 
 public interface AdminInterface{
-    void addElement(String userOrDB);
-    void removeElement();
-    ArrayList search();
-}
+    void removeElement(String identifyer);
+    ArrayList search(String searchValue);
+ }
 //<T> T getEement();
     /*    @Override
     public <OlympicGame> OlympicGame getEement() {
