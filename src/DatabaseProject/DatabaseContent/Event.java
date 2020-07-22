@@ -1,6 +1,6 @@
 package DatabaseProject.DatabaseContent;
 
-public class Event {
+public class Event{
     /**
      * Class for storing events.
      * @param name Name of the event.*/
