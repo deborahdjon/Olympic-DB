@@ -34,6 +34,11 @@ public class Reader {
     private Sport sportToAdd;
 
     public Reader(String dbFilename){
+        this.athletesInit = new HashMap<>();
+        this.teamsInit = new HashMap<>();
+        this.olympicGamesInit = new HashMap<>();
+        this.sportsInit =  new HashMap<>();
+
         dbContent = readInFile(dbFilename);
         for(String[] entry :dbContent){
             transformEntry(entry);
@@ -136,7 +141,8 @@ public class Reader {
 
         // Fill teamToAdd
         OlympicGame firstOlympicGame = new OlympicGame(gamesYear, gamesName, gamesCity);
-        Team firstTeam= new Team(teamName, nocName, firstOlympicGame);
+        Team firstTeam= new Team(teamName, nocName);
+        firstTeam.addOlympicGame(firstOlympicGame);
         this.teamToAdd = firstTeam;
         this.teamsInit.put(this.teamToAdd.getName().get(0), firstTeam);
 
@@ -145,7 +151,6 @@ public class Reader {
         this.olympicGamesInit.put(this.olympicGameToAdd.getName().get(0), firstOlympicGame);
 
         // Fill athlete to add
-        Team firstAthleteTeam = new Team(teamName, nocName, firstOlympicGame );
         Event medalEvent = new Event(eventName);
         Medals medalsInit = new Medals();
         if(medalColor.equals("Bronze")){
@@ -155,7 +160,7 @@ public class Reader {
         }else if(medalColor.equals("Gold")){
             medalsInit.addMedal(Medals.MedalType.GOLD, medalEvent);
         }
-        this.athleteToAdd = new Athlete(id, athleteWeight, athleteHeight,athleteAge, athleteGender, athleteName,firstAthleteTeam, medalsInit);
+        this.athleteToAdd = new Athlete(id, athleteWeight, athleteHeight,athleteAge, athleteGender, athleteName,firstTeam, medalsInit);
         this.athletesInit.put(this.athleteToAdd.getId().toString(), this.athleteToAdd);
 
         // Fill sportToAdd
@@ -163,12 +168,35 @@ public class Reader {
         this.sportToAdd = new Sport(sportName);
         this.sportToAdd.addSportEvent(firstEvent);
         this.sportsInit.put(this.sportToAdd.getName().get(0), this.sportToAdd);
-
     }
 
 
 
+    public HashMap<String, Athlete> getAthleteInit(){
+        return this.athletesInit;
+    }
+    public HashMap<String, Team> getTeamsInit (){
+        return this.teamsInit;
+    }
+    public HashMap<String, OlympicGame> getOlympicGamesInit(){
+        return this.olympicGamesInit;
+    }
+    public HashMap<String, Sport> getSportsInit(){
+        return this.sportsInit;
+    }
 
+    public Athlete getAthleteToAdd(){
+        return this.athleteToAdd;
+    }
+    public Team getTeamToAdd(){
+        return this.teamToAdd;
+    }
+    public   OlympicGame getOlympicGameToAdd(){
+        return this.olympicGameToAdd;
+    }
+    public  Sport getSportToAdd(){
+        return this.sportToAdd;
+    }
 
 
 

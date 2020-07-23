@@ -7,11 +7,10 @@ public class Team extends DatabaseContent{
     private String noc;
     private ArrayList<OlympicGame> olympicGames;
 
-    public Team(String name, String NOC, OlympicGame olympicGame){
+    public Team(String name, String NOC){
         this.addName(name);
         this.noc = NOC;
         this.olympicGames = new ArrayList<OlympicGame>();
-        this.addOlympicGame(olympicGame);
     }
 
     public void addOlympicGame(OlympicGame game){

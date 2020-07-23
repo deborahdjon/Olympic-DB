@@ -46,9 +46,8 @@ public class Medals {
     /**Extract information from medalUpdate
      *@param medalsUpdate medal containing one or no medalEvents
      * @return one-elemented hashmap with medal color and event or null if medalUpdate contains no medals  */
-    public static HashMap<MedalType, Event> getMedalsUpdate(Medals medalsUpdate){
+    public static MedalsUpdate getUpdate(Medals medalsUpdate){
         // check if gold medals in this have the first gold medal in update
-        HashMap<MedalType, Event> update = new HashMap<>();
         MedalType medalType;
         Event medalEvent; //
 
@@ -71,8 +70,7 @@ public class Medals {
         }
 
         if(medalEvent !=null){
-            update.put(medalType,medalEvent);
-            return update;
+            return new MedalsUpdate(medalType, medalEvent);
         }else{
             return null;
         }

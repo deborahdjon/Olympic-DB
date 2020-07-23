@@ -28,21 +28,13 @@ public class Athlete extends DatabaseContent{
     }
 
     //TODO Set all to private
-    public Integer getId() {
-        return this.id;
-    }
+    public Integer getId() { return this.id; }
     public void setId(Integer newId){this.id  = newId;}
 
-    public Integer getWeight(){
-        return this.weight;
-    }
+    public Integer getWeight(){ return this.weight; }
 
-    public Integer getHeight(){
-        return this.height;
-    }
-    public void setHeight(Integer newHeight){
-        this.height = newHeight;
-    }
+    public Integer getHeight(){ return this.height; }
+    public void setHeight(Integer newHeight){ this.height = newHeight; }
 
     public Integer getAge(){
         return this.age;
@@ -59,8 +51,7 @@ public class Athlete extends DatabaseContent{
         return this.teams;
     }
     public void addTeam(Team newTeam){//TODO: throw exception for invalid input
-        this.teams.add(newTeam);
-    }
+        this.teams.add(newTeam); }
 
     public Medals getMedals(){return this.medals;}
 
@@ -72,11 +63,8 @@ public class Athlete extends DatabaseContent{
 
     @Override
     public void update(String identifier, DatabaseContent updatedObject) {
-        // 1:Indecies are ids check by indecy if it exists
-         //"ID": "Name","Sex","Age","Height","Weight", teams[team_name, noc], medal[]
-
         if(updatedObject instanceof Athlete){
-            //  Update name
+            //  Add name
             if (!this.getName().contains(updatedObject.getName().get(0))){
                 this.addName(updatedObject.getName().get(0));
             }
@@ -88,27 +76,25 @@ public class Athlete extends DatabaseContent{
             if((((Athlete) updatedObject).getHeight())>this.getHeight()){
                 this.setHeight(((Athlete) updatedObject).getHeight());
             }
-            // Update team //TODO: this should just be a reference to the team, since the teams can change
+            // Add team //TODO: this should just be a reference to the team, since the teams can change
             AtomicBoolean teamContained = new AtomicBoolean(false);
             this.teams.forEach(team -> {
                 if(team.getName().equals(((Athlete) updatedObject).getTeams().get(0).getName())){
                     teamContained.set(true);
                 }
             });
-            if(teamContained.get() == false){
+            if(!teamContained.get()){
                 this.addTeam(((Athlete) updatedObject).getTeams().get(0));
             }
 
-            //update Medal
-
-
-
-
+            //Add Medal
+            MedalsUpdate update= Medals.getUpdate(((Athlete) updatedObject).getMedals());
+            if(update != null){
+                this.medals.addMedal(update.getType(), update.getEvent());
+            }
         }else{
             throw new Error("Wrong type");
         }
-
-        // how do I make sure this is an athlete
 
     }
 
