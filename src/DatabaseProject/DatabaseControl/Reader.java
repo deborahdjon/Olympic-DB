@@ -59,6 +59,7 @@ public class Reader {
          * @throws IOException when the wrong datatype is assigned or passed.
          */
 
+
         ArrayList<String[]> content = new ArrayList<String[]>();
         String[] entry;
         String line;
@@ -148,11 +149,11 @@ public class Reader {
         Event medalEvent = new Event(eventName);
         Medals medalsInit = new Medals();
         if(medalColor.equals("Bronze")){
-            medalsInit.addMedal(medalEvent, Medals.MedalType.BRONZE);
+            medalsInit.addMedal(Medals.MedalType.BRONZE, medalEvent);
         }else if(medalColor.equals("Silver")){
-            medalsInit.addMedal(medalEvent, Medals.MedalType.SILVER);
+            medalsInit.addMedal(Medals.MedalType.SILVER, medalEvent);
         }else if(medalColor.equals("Gold")){
-            medalsInit.addMedal(medalEvent, Medals.MedalType.GOLD);
+            medalsInit.addMedal(Medals.MedalType.GOLD, medalEvent);
         }
         this.athleteToAdd = new Athlete(id, athleteWeight, athleteHeight,athleteAge, athleteGender, athleteName,firstAthleteTeam, medalsInit);
         this.athletesInit.put(this.athleteToAdd.getId().toString(), this.athleteToAdd);

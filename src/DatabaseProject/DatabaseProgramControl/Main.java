@@ -9,6 +9,8 @@
  */
 package DatabaseProject.DatabaseProgramControl;
 
+import DatabaseProject.DatabaseContent.Event;
+import DatabaseProject.DatabaseContent.Medals;
 import DatabaseProject.DatabaseControl.Reader;
 
 //public class Main extends Application{
@@ -24,7 +26,6 @@ public class Main{
      * System Arguments
     * */
     public static void main(String[] args) {
-        Reader test = new Reader("Resources\\olympic.db");
 
     }
 }
