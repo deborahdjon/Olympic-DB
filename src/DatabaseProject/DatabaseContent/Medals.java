@@ -21,14 +21,14 @@ public class Medals {
     }
 
 
-    public  HashMap<MedalType, ArrayList<Event>> getMedalsStore(){
+    public HashMap<MedalType, ArrayList<Event>> getMedalsStore(){
         return this.medalsStore;
     }
     public ArrayList<Event> getGold(){return this.medalsStore.get(MedalType.GOLD);}
     public ArrayList<Event> getSilver(){return this.medalsStore.get(MedalType.SILVER);}
     public ArrayList<Event> getBronze(){return this.medalsStore.get(MedalType.BRONZE);}
 
-    /**Gets the gold medal events into a string array for display in the user interface.
+    /**Puts the gold medal event names into a string array for display in the user interface.
      * @return List of event names where athlete won gold.*/
     public ArrayList<String> getGoldString(){
         ArrayList<Event> goldEvents = getGold();
@@ -37,7 +37,7 @@ public class Medals {
         return goldEventsStrings;
     }
 
-    /**Gets the silver medal events into a string array for display in the user interface.
+    /**Puts the silver medal event names into a string array for display in the user interface.
      * @return List of event names where athlete won silver.*/
     public ArrayList<String> getSilverString(){
         ArrayList<Event> silverEvents = getSilver();
@@ -45,7 +45,7 @@ public class Medals {
         silverEvents.forEach(event -> silverEventsStrings.add(event.getName()));
         return silverEventsStrings;
     }
-    /**Gets the bronze medal events into a string array for display in the user interface.
+    /**Puts the bronze medal event names into a string array for display in the user interface.
      * @return List of event names where athlete won bronze.*/
     public ArrayList<String> getBronzeString(){
         ArrayList<Event> bronzeEvents = getBronze();
