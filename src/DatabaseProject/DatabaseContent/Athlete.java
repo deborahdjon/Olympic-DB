@@ -1,50 +1,53 @@
 package DatabaseProject.DatabaseContent;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Athlete extends DatabaseContent{
-    private Integer id; //TODO change to String ??
-    private final Integer weight; // never gets updated
-    private Integer height;
-    private Integer age;
-    private final String gender;
+    private SimpleIntegerProperty id; //TODO change to String ??
+    private final SimpleIntegerProperty weight; // never gets updated
+    private SimpleIntegerProperty height;
+    private SimpleIntegerProperty age;
+    private final SimpleStringProperty gender;
     private ArrayList<Team> teams;
     private Medals medals;
 
     public Athlete(Integer id, Integer weight, Integer height, Integer age, String gender, String name, Team team, Medals medals){
         if(id !=null){
-            this.id = id;
+            this.id = new SimpleIntegerProperty(id);
         }
-        this.weight = weight;
-        this.height = height;
-        this.age = age;
-        this.gender = gender;
-        this.addName(name);
-        this.teams = new ArrayList<Team>();
+        this.weight = new SimpleIntegerProperty(weight);
+        this.height = new SimpleIntegerProperty(height);
+        this.age = new SimpleIntegerProperty(age);
+        setName(name);
+        this.teams = new ArrayList<>();
+        this.gender = new SimpleStringProperty(gender);
         this.addTeam(team);
         this.medals = medals;
     }
 
     //TODO Set all to private
-    public Integer getId() { return this.id; }
-    public void setId(Integer newId){this.id  = newId;}
+    public Integer getId() { return this.id.get(); }
+    public void setId(Integer newId){this.id  = new SimpleIntegerProperty(newId);}
 
-    public Integer getWeight(){ return this.weight; }
+    public Integer getWeight(){ return this.weight.get(); }
 
-    public Integer getHeight(){ return this.height; }
-    public void setHeight(Integer newHeight){ this.height = newHeight; }
+    public Integer getHeight(){ return this.height.get(); }
+    public void setHeight(Integer newHeight){ this.height = new SimpleIntegerProperty(newHeight); }
 
     public Integer getAge(){
-        return this.age;
+        return this.age.get();
     }
     public void setAge(Integer newAge){//TODO: throw exception for invalid input
-        this.age = newAge;
+        this.age = new SimpleIntegerProperty(newAge);
     }
 
     public String getGender(){
-        return this.gender;
+        return this.gender.get();
     }
 
     public ArrayList<Team> getTeams(){
@@ -56,17 +59,13 @@ public class Athlete extends DatabaseContent{
     public Medals getMedals(){return this.medals;}
 
 
-    @Override
-    public HashMap<ArrayList<String>, HashMap<String, String>> returnData() {
-        return null;
-    }
 
     @Override
     public void update(String identifier, DatabaseContent updatedObject) {
         if(updatedObject instanceof Athlete){
             //  Add name
-            if (!this.getName().contains(updatedObject.getName().get(0))){
-                this.addName(updatedObject.getName().get(0));
+            if (!this.getName().contains(updatedObject.getName())){
+                this.addName(updatedObject.getName());
             }
             // Update age
             if((((Athlete) updatedObject).getAge())>this.getAge()){

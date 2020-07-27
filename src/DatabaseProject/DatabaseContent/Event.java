@@ -1,17 +1,17 @@
 package DatabaseProject.DatabaseContent;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Event{
-    /**
-     * Class for storing events.
-     * @param name Name of the event.*/
+    /**Class for storing events.*/
+    private SimpleStringProperty name;
 
-    private String name;
-
-    public Event(String eventname){
-        this.name = eventname;
+    /**Set the name property*/
+    public Event(String eventName){
+        this.name = new SimpleStringProperty(eventName);
     }
 
     public String getName() {
-        return this.name;
+        return this.name.get();
     }
 }

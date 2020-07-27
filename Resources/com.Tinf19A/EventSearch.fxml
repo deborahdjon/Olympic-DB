@@ -46,11 +46,7 @@
                               <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" text="Search" />
                            </children>
                         </HBox>
-                        <TableView prefHeight="257.0" prefWidth="283.0">
-                          <columns>
-                            <TableColumn prefWidth="293.5999813079834" text="Name" />
-                          </columns>
-                        </TableView>
+                        <ListView prefHeight="252.0" prefWidth="283.0" />
                      </children>
                   </VBox>
                   <Button layoutX="314.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" text="Main Menu" />

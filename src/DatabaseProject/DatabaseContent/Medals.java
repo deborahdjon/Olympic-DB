@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**Class that stores the medals of an athlete.*/
 public class Medals {
     /**Stores medals.*/
-    private HashMap<MedalType, ArrayList<Event>> medalsStore = new HashMap<MedalType, ArrayList<Event>>();
+    private HashMap<MedalType, ArrayList<Event>> medalsStore = new HashMap<>();
 
     public enum MedalType{
         GOLD,
@@ -15,19 +15,45 @@ public class Medals {
 
     /**Create GOLD, SILVER and BRONZE entries for medalsStore*/
     public Medals(){
-        this.medalsStore.put(MedalType.GOLD, new ArrayList<Event>());
-        this.medalsStore.put(MedalType.SILVER, new ArrayList<Event>());
-        this.medalsStore.put(MedalType.BRONZE, new ArrayList<Event>());
+        this.medalsStore.put(MedalType.GOLD, new ArrayList<>());
+        this.medalsStore.put(MedalType.SILVER, new ArrayList<>());
+        this.medalsStore.put(MedalType.BRONZE, new ArrayList<>());
     }
-
 
 
     public  HashMap<MedalType, ArrayList<Event>> getMedalsStore(){
         return this.medalsStore;
     }
-    public ArrayList<Event> getGold(){return this.medalsStore.get(MedalType.GOLD);};
-    public ArrayList<Event> getSilver(){return this.medalsStore.get(MedalType.SILVER);};
-    public ArrayList<Event> getBronze(){return this.medalsStore.get(MedalType.BRONZE);};
+    public ArrayList<Event> getGold(){return this.medalsStore.get(MedalType.GOLD);}
+    public ArrayList<Event> getSilver(){return this.medalsStore.get(MedalType.SILVER);}
+    public ArrayList<Event> getBronze(){return this.medalsStore.get(MedalType.BRONZE);}
+
+    /**Gets the gold medal events into a string array for display in the user interface.
+     * @return List of event names where athlete won gold.*/
+    public ArrayList<String> getGoldString(){
+        ArrayList<Event> goldEvents = getGold();
+        ArrayList<String> goldEventsStrings = new ArrayList<>();
+        goldEvents.forEach(event -> goldEventsStrings.add(event.getName()));
+        return goldEventsStrings;
+    }
+
+    /**Gets the silver medal events into a string array for display in the user interface.
+     * @return List of event names where athlete won silver.*/
+    public ArrayList<String> getSilverString(){
+        ArrayList<Event> silverEvents = getSilver();
+        ArrayList<String> silverEventsStrings = new ArrayList<>();
+        silverEvents.forEach(event -> silverEventsStrings.add(event.getName()));
+        return silverEventsStrings;
+    }
+    /**Gets the bronze medal events into a string array for display in the user interface.
+     * @return List of event names where athlete won bronze.*/
+    public ArrayList<String> getBronzeString(){
+        ArrayList<Event> bronzeEvents = getBronze();
+        ArrayList<String> bronzeEventsStrings = new ArrayList<>();
+        bronzeEvents.forEach(event -> bronzeEventsStrings.add(event.getName()));
+        return bronzeEventsStrings;
+    }
+
 
     /**Adding a medal to medalStore
      * @param event event where medal was won

@@ -1,34 +1,40 @@
 package DatabaseProject.DatabaseContent;
 
-import javafx.event.Event;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class OlympicGame extends DatabaseContent{
-    private int year;
-    private String city;
+    private SimpleIntegerProperty year;
+    private SimpleStringProperty city;
     private ArrayList<Event> events;
     public OlympicGame(int year, String name, String city){
-        this.year = year;
-        this.addName(name);
-        this.city = city;
+        this.year = new SimpleIntegerProperty(year);
+        this.setName(name);
+        this.city = new SimpleStringProperty(city);
     }
     public void addEvent(Event event){
         this.events.add(event);
     }
 
     public int getyear(){
-        return this.year;
+        return this.year.get();
     }
 
     public String getCity(){
-        return this.city;
+        return this.city.get();
     }
 
-    @Override
-    public HashMap<ArrayList<String>, HashMap<String, String>> returnData() {
-        return null;
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
+
+    public ArrayList<String> getEventsString(){
+        ArrayList<Event> events = getEvents();
+        ArrayList <String> eventsStrings = new ArrayList<>();
+        events.forEach(event -> eventsStrings.add(event.getName()));
+        return eventsStrings;
     }
 
     @Override

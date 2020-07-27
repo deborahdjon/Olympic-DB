@@ -1,14 +1,13 @@
 package DatabaseProject.DatabaseContent;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Sport extends DatabaseContent{
     private ArrayList<Event> sportEvents;
 
     public Sport(String name){
         this.addName(name);
-        this.sportEvents = new ArrayList<Event>();
+        this.sportEvents = new ArrayList<>();
     }
 
     public void addSportEvent(Event event){
@@ -17,11 +16,6 @@ public class Sport extends DatabaseContent{
 
     public ArrayList<Event> getSportEvents() {
         return this.sportEvents;
-    }
-
-    @Override
-    public HashMap<ArrayList<String>, HashMap<String, String>> returnData() {
-        return null;
     }
 
     @Override
