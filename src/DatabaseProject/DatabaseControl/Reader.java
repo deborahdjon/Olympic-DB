@@ -38,7 +38,8 @@ public class Reader {
 
         dbContent = readInFile(dbFilename);
         for(String[] entry :dbContent){
-            transformEntry(entry);
+            transformEntry(entry);//TODO Splitup
+            //TODO Deserialize
         }
     }
 
@@ -83,10 +84,16 @@ public class Reader {
      * it into the datastructures from the DatabseContent package.
      * @param entry String array that contains one column entry from the data base at each index.
      * */
+
+    // TODO Extract Sport Events and Olympic Games
+    // TODO Extract Teams
+    // TODO Extract Athletes
+
     private void transformEntry(String[] entry){
 
-        // Read all entry fileds
+        // Read all entry fields
         Integer id;
+        // In case user entry no id given
         try{
             id  = Integer.parseInt(entry[0]);
             if(id>this.lastUnavailableID){
@@ -102,19 +109,19 @@ public class Reader {
         try {
             athleteAge = Integer.parseInt(entry[3]);
         }catch (NumberFormatException e){
-            athleteAge = null;
+            athleteAge = 0;//TODO try convert to SimpleObjectProperty, they allow null
         }
         Integer athleteHeight;
         try{
             athleteHeight=Integer.parseInt(entry[4]);
         }catch(NumberFormatException e){
-            athleteHeight = null;
+            athleteHeight = 0;
         }
         Integer athleteWeight;
         try{
             athleteWeight = Integer.parseInt(entry[5]);
         }catch (NumberFormatException e){
-            athleteWeight=null;
+            athleteWeight=0;
         }
         String teamName = entry[6];
         String nocName = entry[7];
@@ -159,6 +166,8 @@ public class Reader {
         this.sportToAdd.addSportEvent(firstEvent);
         this.sportsAdminStoreInit.put(this.sportToAdd.getName(), this.sportToAdd);
     }
+
+
 
     public HashMap<String, Athlete> getAthleteInit(){
         return this.athletesAdminStoreInit;
@@ -230,5 +239,6 @@ public class Reader {
                 season, city, sport, event, medal};
         return entry;
     }
+
 
 }

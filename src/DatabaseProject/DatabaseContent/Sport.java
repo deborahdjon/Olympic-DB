@@ -8,7 +8,7 @@ public class Sport extends DatabaseContent{
     private ArrayList<Event> sportEvents;
 
     public Sport(String name){
-        this.addName(name);
+        this.setName(name);
         this.sportEvents = new ArrayList<>();
     }
 

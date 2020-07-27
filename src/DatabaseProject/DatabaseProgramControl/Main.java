@@ -9,9 +9,7 @@
  */
 package DatabaseProject.DatabaseProgramControl;
 
-import DatabaseProject.DatabaseContent.Athlete;
-import DatabaseProject.DatabaseContent.Event;
-import DatabaseProject.DatabaseContent.Medals;
+import DatabaseProject.DatabaseContent.*;
 import DatabaseProject.DatabaseContentAdmins.Admin;
 import DatabaseProject.DatabaseControl.Reader;
 
@@ -28,9 +26,18 @@ public class Main{
      * System Arguments
     * */
     public static void main(String[] args) {
-        Reader firstReader = new Reader("Resources\\com.Tinf19A\\test.db");
-        Admin<Athlete> athleteAdmin = new Admin();
-        athleteAdmin.setStorage(firstReader.getAthleteInit());
+        Reader initialReader = new Reader("Resources\\DatabaseProject\\test.db");
+        Admin<Athlete> athleteAdmin = new Admin<>();
+        Admin<Team> teamAdmin = new Admin<>();
+        Admin<Sport> sportAdmin = new Admin<>();
+        Admin<OlympicGame> olympicGameAdmin= new Admin<>();
+
+        athleteAdmin.setStorage(initialReader.getAthleteInit());
+        teamAdmin.setStorage(initialReader.getTeamsAdminStoreInit());
+        sportAdmin.setStorage(initialReader.getSportsAdminStoreInit());
+        olympicGameAdmin.setStorage(initialReader.getOlympicGamesAdminStoreInit());
+        initialReader = null;
+
 
     }
 }
