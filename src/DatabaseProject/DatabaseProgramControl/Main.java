@@ -11,33 +11,32 @@ package DatabaseProject.DatabaseProgramControl;
 
 import DatabaseProject.DatabaseContent.*;
 import DatabaseProject.DatabaseContentAdmins.Admin;
+import DatabaseProject.DatabaseContentAdmins.AdminAdmin;
 import DatabaseProject.DatabaseControl.Reader;
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-//public class Main extends Application{
-//
-//    @Override
-//    public void start(Stage stage) throws Exception {
-//    }
-//}
-public class Main{
-    /**
-    *Starts the Programme
-    * @param args
-     * System Arguments
-    * */
-    public static void main(String[] args) {
-        Reader initialReader = new Reader("Resources\\DatabaseProject\\test.db");
-        Admin<Athlete> athleteAdmin = new Admin<>();
-        Admin<Team> teamAdmin = new Admin<>();
-        Admin<Sport> sportAdmin = new Admin<>();
-        Admin<OlympicGame> olympicGameAdmin= new Admin<>();
+/**
+ *Starts the Programme
+ * */
+public class Main extends Application {
 
-        athleteAdmin.setStorage(initialReader.getAthleteInit());
-        teamAdmin.setStorage(initialReader.getTeamsAdminStoreInit());
-        sportAdmin.setStorage(initialReader.getSportsAdminStoreInit());
-        olympicGameAdmin.setStorage(initialReader.getOlympicGamesAdminStoreInit());
-        initialReader = null;
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        AdminAdmin adminAdmin = new AdminAdmin();
+        Parent root =  FXMLLoader.load(this.getClass().getResource("MainMenu.fxml"));
+        primaryStage.setTitle("Olympic Games Database");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.show();
 
     }
+    public static void main(String[] args){
+        launch(args);
+    }
+
 }
