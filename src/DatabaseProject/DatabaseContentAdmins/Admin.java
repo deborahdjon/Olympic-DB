@@ -52,13 +52,13 @@ public class Admin<T>{
         // function needs to be overridden
     }
 
-    public void add(String identifier, T newContent, Status status){
+    public void add(String identifier, T newContent, Status status, HashMap<String, DatabaseContent> referenceAdminstore){
        if(this.storage.get(identifier)!=null && newContent instanceof DatabaseContent){
            ((DatabaseContent) newContent).changeStatus(status);
            storage.put(identifier, newContent);
        }else{
            if(this.storage.get(identifier) instanceof DatabaseContent){
-              ((DatabaseContent) this.storage.get(identifier)).update(identifier,(DatabaseContent) newContent);
+              ((DatabaseContent) this.storage.get(identifier)).update(identifier,(DatabaseContent) newContent, referenceAdminstore);
            }
        }
     }

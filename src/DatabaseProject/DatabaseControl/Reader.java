@@ -11,37 +11,35 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
+/**Class Concerned with reading in the entries from the file and the user into the program.*/
 
 public class Reader {
-    /**
-     * Class Concerned with reading in the entries from the file and the user into the program.
-     * @param dbFilename Name of the database file.
-     */
 
-    private int lastId=0;
+    private int lastUnavailableID =0;
 
     private static ArrayList<String[]> dbContent;
 
-    private HashMap<String, Athlete> athletesInit;
-    private HashMap<String, Team> teamsInit;
-    private HashMap<String, OlympicGame> olympicGamesInit;
-    private HashMap<String, Sport> sportsInit;
-
+    private HashMap<String, Athlete> athletesAdminStoreInit;
+    private HashMap<String, Team> teamsAdminStoreInit;
+    private HashMap<String, OlympicGame> olympicGamesAdminStoreInit;
+    private HashMap<String, Sport> sportsAdminStoreInit;
 
     private Athlete athleteToAdd;
     private Team teamToAdd;
     private OlympicGame olympicGameToAdd;
     private Sport sportToAdd;
 
+    /**Initialize the store initialize HashMaps for the Admins*/
     public Reader(String dbFilename){
-        this.athletesInit = new HashMap<>();
-        this.teamsInit = new HashMap<>();
-        this.olympicGamesInit = new HashMap<>();
-        this.sportsInit =  new HashMap<>();
+        this.athletesAdminStoreInit = new HashMap<>();
+        this.teamsAdminStoreInit = new HashMap<>();
+        this.olympicGamesAdminStoreInit = new HashMap<>();
+        this.sportsAdminStoreInit =  new HashMap<>();
 
         dbContent = readInFile(dbFilename);
         for(String[] entry :dbContent){
-            transformEntry(entry);
+            transformEntry(entry);//TODO Splitup
+            //TODO Deserialize
         }
     }
 
@@ -49,23 +47,16 @@ public class Reader {
         transformEntry(entry);
     }
 
-    //TODO: Reader with all attributes (add entry)
-    //TODO: Reader with all attributes but no id (new result)
-
-
-
+    /**
+     * Reads in all results from the database file into a large ArrayList.
+     * Each result in the database file is one String[].
+     * @return ArrayList<String[]>.
+     * @param filename Name of the database file.
+     */
     private ArrayList<String[]> readInFile(String filename){
-        /**
-         * Reads in all results from the database file into a large ArrayList.
-         * Each result in the database file is one String[].
-         * @return ArrayList<String[]>.
-         * @param filename Name of the database file.
-         * @throws FileNotFoundException when file does not exist.
-         * @throws IOException when the wrong datatype is assigned or passed.
-         */
 
 
-        ArrayList<String[]> content = new ArrayList<String[]>();
+        ArrayList<String[]> content = new ArrayList<>();
         String[] entry;
         String line;
         try(BufferedReader br = new BufferedReader(new FileReader(filename))){
@@ -89,44 +80,47 @@ public class Reader {
         return content;
     }
 
+    /**Function that takes one entry (row from the database file) and converts
+     * it into the datastructures from the DatabseContent package.
+     * @param entry String array that contains one column entry from the data base at each index.
+     * */
+
+    // TODO Extract Sport Events and Olympic Games
+    // TODO Extract Teams
+    // TODO Extract Athletes
 
     private void transformEntry(String[] entry){
-        /**
-         * Function that takes one entry (row from the database file) and converts
-         * it into the datastructures from the DatabseContent package.
-         * @param entry String array that contains one column entry from the data base at each index.
-         * @return none*/
 
-        // Read all entry fileds
+        // Read all entry fields
         Integer id;
-        // In case user entry no id given
         try{
             id  = Integer.parseInt(entry[0]);
-            if(id>this.lastId){
-                this.lastId = id;
+            if(id>this.lastUnavailableID){
+                this.lastUnavailableID = id;
             }
         }catch(NumberFormatException e){ // TODO: Only if empty error should be caught, if entered data is not a number,or doesn't exist, Throw anerror
             id = null;
         }
         String athleteName = entry[1];
+
         String athleteGender = entry[2];
         Integer athleteAge;
         try {
             athleteAge = Integer.parseInt(entry[3]);
         }catch (NumberFormatException e){
-            athleteAge = null;
+            athleteAge = 0;//TODO try convert to SimpleObjectProperty, they allow null
         }
         Integer athleteHeight;
         try{
             athleteHeight=Integer.parseInt(entry[4]);
         }catch(NumberFormatException e){
-            athleteHeight = null;
+            athleteHeight = 0;
         }
         Integer athleteWeight;
         try{
             athleteWeight = Integer.parseInt(entry[5]);
         }catch (NumberFormatException e){
-            athleteWeight=null;
+            athleteWeight=0;
         }
         String teamName = entry[6];
         String nocName = entry[7];
@@ -140,49 +134,49 @@ public class Reader {
 
 
         // Fill teamToAdd
-        OlympicGame firstOlympicGame = new OlympicGame(gamesYear, gamesName, gamesCity);
+        OlympicGame firstOlympicGame = new OlympicGame(gamesYear, gamesName, gamesCity, gamesSeason);
         Team firstTeam= new Team(teamName, nocName);
         firstTeam.addOlympicGame(firstOlympicGame);
         this.teamToAdd = firstTeam;
-        this.teamsInit.put(this.teamToAdd.getName().get(0), firstTeam);
+        this.teamsAdminStoreInit.put(this.teamToAdd.getName(), firstTeam);
 
         // Fill olympicGameToAdd
         this.olympicGameToAdd = firstOlympicGame;
-        this.olympicGamesInit.put(this.olympicGameToAdd.getName().get(0), firstOlympicGame);
+        this.olympicGamesAdminStoreInit.put(this.olympicGameToAdd.getName(), firstOlympicGame);
 
         // Fill athlete to add
+        if (id == null){
+            id = this.lastUnavailableID+1;
+            this.lastUnavailableID = id;
+        }
         Event medalEvent = new Event(eventName);
         Medals medalsInit = new Medals();
-        if(medalColor.equals("Bronze")){
-            medalsInit.addMedal(Medals.MedalType.BRONZE, medalEvent);
-        }else if(medalColor.equals("Silver")){
-            medalsInit.addMedal(Medals.MedalType.SILVER, medalEvent);
-        }else if(medalColor.equals("Gold")){
-            medalsInit.addMedal(Medals.MedalType.GOLD, medalEvent);
+        switch (medalColor) {
+            case "Bronze" -> medalsInit.addMedal(Medals.MedalType.BRONZE, medalEvent);
+            case "Silver" -> medalsInit.addMedal(Medals.MedalType.SILVER, medalEvent);
+            case "Gold" -> medalsInit.addMedal(Medals.MedalType.GOLD, medalEvent);
         }
         this.athleteToAdd = new Athlete(id, athleteWeight, athleteHeight,athleteAge, athleteGender, athleteName,firstTeam, medalsInit);
-        this.athletesInit.put(this.athleteToAdd.getId().toString(), this.athleteToAdd);
+        this.athletesAdminStoreInit.put(this.athleteToAdd.getId().toString(), this.athleteToAdd);
 
         // Fill sportToAdd
         Event firstEvent = new Event(eventName);
         this.sportToAdd = new Sport(sportName);
         this.sportToAdd.addSportEvent(firstEvent);
-        this.sportsInit.put(this.sportToAdd.getName().get(0), this.sportToAdd);
+        this.sportsAdminStoreInit.put(this.sportToAdd.getName(), this.sportToAdd);
     }
-
-
 
     public HashMap<String, Athlete> getAthleteInit(){
-        return this.athletesInit;
+        return this.athletesAdminStoreInit;
     }
-    public HashMap<String, Team> getTeamsInit (){
-        return this.teamsInit;
+    public HashMap<String, Team> getTeamsAdminStoreInit(){
+        return this.teamsAdminStoreInit;
     }
-    public HashMap<String, OlympicGame> getOlympicGamesInit(){
-        return this.olympicGamesInit;
+    public HashMap<String, OlympicGame> getOlympicGamesAdminStoreInit(){
+        return this.olympicGamesAdminStoreInit;
     }
-    public HashMap<String, Sport> getSportsInit(){
-        return this.sportsInit;
+    public HashMap<String, Sport> getSportsAdminStoreInit(){
+        return this.sportsAdminStoreInit;
     }
 
     public Athlete getAthleteToAdd(){
@@ -198,8 +192,9 @@ public class Reader {
         return this.sportToAdd;
     }
 
-
-
+    /**Serializes all entries that were added or updated by the user.
+     * @param toSerialize Hashmap with AdminStore entries that were added or updated by the user.
+     * @param fileName name of the file that stores te serialized object*/
     public void serializeDataFromUser(HashMap<String, DatabaseContent> toSerialize, String fileName){
         HashMap<String, DatabaseContent> buffer = new HashMap<>();
         toSerialize.forEach((key,value)->{
@@ -208,18 +203,22 @@ public class Reader {
             }
         });
     }
-    public DatabaseContent deserializeDataFromUser(String filename){
+    /**Deserializes serialised AdminStore entries.
+     * @param filename name of the file that stores the serialized object.
+     * @return Hashmap with AdminStore entries that were added or updated by the user in the last
+     * time the programme was run.*/
+    public HashMap<String, DatabaseContent> deserializeDataFromUser(String filename){
         return null;
     }
 
-    public static String[] newResult(String id, String name, String gender, String age, String height,
+    public static String[] newAthlete(String id, String name, String gender, String age, String height,
                                      String weight, String team, String noc, String gameName,String gameYear,
                                      String season, String city, String sport, String event, String medal){
 
         String[] entry = {id, name, gender, age, height, weight, team, noc, gameName, gameYear,
                             season, city, sport, event, medal};
 
-        /**TODO: Error Handling for user entry
+        /*TODO: Error Handling for user entry
          * name warning
          * gender can't be edited
          * age can't be below athlete age
@@ -231,4 +230,12 @@ public class Reader {
          * */
         return entry;
     }
+    public static String[] newResult(String id, String team, String noc, String gameName, String gameYear,
+                                 String season, String city, String sport, String event, String medal){
+        String[] entry = {id, "NA", "NA", "NA", "NA", "NA", team, noc, gameName, gameYear,
+                season, city, sport, event, medal};
+        return entry;
+    }
+
+
 }

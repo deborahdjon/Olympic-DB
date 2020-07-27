@@ -5,7 +5,9 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 public class Athlete extends DatabaseContent{
     private SimpleIntegerProperty id; //TODO change to String ??
@@ -17,9 +19,7 @@ public class Athlete extends DatabaseContent{
     private Medals medals;
 
     public Athlete(Integer id, Integer weight, Integer height, Integer age, String gender, String name, Team team, Medals medals){
-        if(id !=null){
-            this.id = new SimpleIntegerProperty(id);
-        }
+        this.id = new SimpleIntegerProperty(id);
         this.weight = new SimpleIntegerProperty(weight);
         this.height = new SimpleIntegerProperty(height);
         this.age = new SimpleIntegerProperty(age);
@@ -61,37 +61,43 @@ public class Athlete extends DatabaseContent{
 
 
     @Override
-    public void update(String identifier, DatabaseContent updatedObject) {
+    public void update(String identifier, DatabaseContent updatedObject, HashMap<String, DatabaseContent> referenceAdminStore) {
         if(updatedObject instanceof Athlete){
-            //  Add name
-            if (!this.getName().contains(updatedObject.getName())){
-                this.addName(updatedObject.getName());
+            Athlete athleteUpdate = (Athlete) updatedObject;
+
+            String nameUpdate = athleteUpdate.getName();
+            if ((!this.getName().contains(nameUpdate)) && !(athleteUpdate.getName().equals("NA"))){
+                this.addName(athleteUpdate.getName());
             }
-            // Update age
-            if((((Athlete) updatedObject).getAge())>this.getAge()){
-                this.setAge(((Athlete) updatedObject).getAge());
+
+            if((athleteUpdate.getAge())>this.getAge()){
+                this.setAge(athleteUpdate.getAge());
             }
-            // Update height
-            if((((Athlete) updatedObject).getHeight())>this.getHeight()){
-                this.setHeight(((Athlete) updatedObject).getHeight());
+
+            if((athleteUpdate.getHeight())>this.getHeight()){
+                this.setHeight(athleteUpdate.getHeight());
             }
-            // Add team //TODO: this should just be a reference to the team, since the teams can change
+
+            String nameOfTeamToUpdate = (athleteUpdate.getTeams().get(0).getName());
             AtomicBoolean teamContained = new AtomicBoolean(false);
             this.teams.forEach(team -> {
-                if(team.getName().equals(((Athlete) updatedObject).getTeams().get(0).getName())){
+                if(team.getName().equals(nameOfTeamToUpdate)){
                     teamContained.set(true);
                 }
             });
             if(!teamContained.get()){
-                this.addTeam(((Athlete) updatedObject).getTeams().get(0));
+                DatabaseContent teamToAdd = referenceAdminStore.get(nameOfTeamToUpdate);
+                if (teamToAdd instanceof Team){
+                    this.addTeam((Team) teamToAdd);
+                }
             }
 
             //Add Medal
-            MedalsUpdate update= Medals.getUpdate(((Athlete) updatedObject).getMedals());
+            MedalsUpdate update= Medals.getUpdate(athleteUpdate.getMedals());
             if(update != null){
                 this.medals.addMedal(update.getType(), update.getEvent());
             }
-        }else{
+        }else{//TODO rm
             throw new Error("Wrong type");
         }
 

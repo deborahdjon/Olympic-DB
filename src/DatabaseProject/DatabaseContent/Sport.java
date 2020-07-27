@@ -1,12 +1,14 @@
 package DatabaseProject.DatabaseContent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Sport extends DatabaseContent{
     private ArrayList<Event> sportEvents;
 
     public Sport(String name){
-        this.addName(name);
+        this.setName(name);
         this.sportEvents = new ArrayList<>();
     }
 
@@ -19,12 +21,21 @@ public class Sport extends DatabaseContent{
     }
 
     @Override
-    public void update(String identifier, DatabaseContent updatedObject) {
-
-        //1: Tu alle sportarten rein, remove dupplicates
-        //2: Adde events: checke immer, ob das event schon in event list ist
-        // sportart, event[]
+    public void update(String identifier, DatabaseContent updatedObject, HashMap<String, DatabaseContent> referenceAdminStore) {
+        if (updatedObject instanceof Sport){
+            Sport sportUpdate =(Sport) updatedObject;
+            AtomicBoolean eventContained = new AtomicBoolean(false);
+            Event eventToAdd = (sportUpdate.getSportEvents().get(0));
+            this.getSportEvents().forEach(event -> {
+                if (eventToAdd.getName().equals(event.getName())){
+                    eventContained.set(true);
+                }
+            });
+            if (!eventContained.get()){
+                this.addSportEvent(eventToAdd);
+            }
+        }else { //TOdo get rud
+            throw new Error("wrong type");
+        }
     }
-
-
 }
