@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!--fx:controller="sample.Controller"-->
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <FlowPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Olympic Games Database">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font></Text>
+            <ImageView fitHeight="82.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@1200px-Olympic_Rings.svg.png" />
+               </image>
+            </ImageView>
+         </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+      </FlowPane>
+   </top>
+   <center>
+      <StackPane prefHeight="318.0" prefWidth="465.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="316.0" fitWidth="687.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+               <image>
+                  <Image url="@../runners.jpg" />
+               </image>
+            </ImageView>
+            <AnchorPane prefHeight="316.0" prefWidth="537.0">
+               <children>
+                  <HBox prefHeight="242.0" prefWidth="594.0" spacing="20.0" AnchorPane.leftAnchor="0.0">
+                     <children>
+                        <VBox prefHeight="242.0" prefWidth="163.0" spacing="10.0">
+                           <children>
+                              <Text fill="WHITE" stroke="WHITE" strokeLineCap="BUTT" text="Athlete Details" wrappingWidth="197.76171875">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Text>
+                              <GridPane prefHeight="202.0" prefWidth="174.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.0" minWidth="10.0" prefWidth="92.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="106.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="27.4" minHeight="10.0" prefHeight="20.6" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="70.79999999999998" minHeight="10.0" prefHeight="28.2" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="63.8" minHeight="10.0" prefHeight="44.20000762939453" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="65.40000762939452" minHeight="10.0" prefHeight="32.8" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="47.2" minHeight="10.0" prefHeight="47.2" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="49.400000000000006" minHeight="10.0" prefHeight="31.200000000000017" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="ID" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="32.0" prefWidth="43.0" text="Label" textFill="WHITE" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Name" textFill="WHITE" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold Italic" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Age" textFill="WHITE" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold Italic" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Height" textFill="WHITE" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold Italic" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Gender" textFill="WHITE" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="System Bold Italic" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Weight" textFill="WHITE" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold Italic" size="17.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="242.0" prefWidth="183.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Gold Medals">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Text>
+                              <ListView prefHeight="200.0" prefWidth="200.0" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Silver Medals">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Text>
+                              <ListView prefHeight="200.0" prefWidth="205.0" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bronze Medals">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Text>
+                              <ListView prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="242.0" prefWidth="140.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Teams">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Text>
+                              <ListView prefHeight="102.0" prefWidth="140.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <Button layoutX="314.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" text="Main Menu" />
+                  <Button layoutX="405.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="55.0" text="Back" />
+               </children></AnchorPane>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
