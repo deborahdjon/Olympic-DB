@@ -8,23 +8,24 @@
 
 <!--fx:controller="sample.Controller"-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DatabaseProject.DatabaseProgramControl.AthleteDetailsController">
    <top>
-      <FlowPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <FlowPane hgap="20.0" prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Olympic Games Database">
                <font>
-                  <Font name="System Bold" size="35.0" />
-               </font></Text>
+                  <Font size="32.0" />
+               </font>
+            </Text>
             <ImageView fitHeight="82.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@1200px-Olympic_Rings.svg.png" />
+                  <Image url="@olympic_rings.png" />
                </image>
             </ImageView>
          </children>
-         <BorderPane.margin>
-            <Insets left="10.0" />
-         </BorderPane.margin>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
       </FlowPane>
    </top>
    <center>
@@ -32,7 +33,7 @@
          <children>
             <ImageView fitHeight="316.0" fitWidth="687.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
                <image>
-                  <Image url="@../runners.jpg" />
+                  <Image url="@runners.jpg" />
                </image>
             </ImageView>
             <AnchorPane prefHeight="316.0" prefWidth="537.0">
@@ -157,8 +158,8 @@
                         <Insets left="30.0" />
                      </padding>
                   </HBox>
-                  <Button layoutX="314.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" text="Main Menu" />
-                  <Button layoutX="405.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="55.0" text="Back" />
+                  <Button layoutX="314.0" layoutY="252.0" mnemonicParsing="false" onAction="#switchSceneToMainMenu" prefHeight="30.0" prefWidth="78.0" text="Main Menu" />
+                  <Button layoutX="405.0" layoutY="252.0" mnemonicParsing="false" onAction="#switchSceneToAthleteSearch" prefHeight="30.0" prefWidth="55.0" text="Back" />
                </children></AnchorPane>
          </children>
       </StackPane>

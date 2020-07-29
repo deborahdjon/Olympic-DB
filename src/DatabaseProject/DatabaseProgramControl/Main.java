@@ -31,7 +31,7 @@ public class Main extends Application {
        // AdminAdmin adminAdmin = new AdminAdmin();
         //FXMLLoader loader = new FXMLLoader(new File("C:\\Users\\debor\\IdeaProjects\\9537809\\Resources\\DatabaseProject\\MainMenu.fxml").toURI().toURL());
         //Parent root = loader.load();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("DatabaseProject\\MainMenu.fxml")));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("DatabaseProject\\MainMenu.fxml"));
 
         primaryStage.setTitle("Olympic Games Database");
         primaryStage.setScene(new Scene(root, 600, 400));

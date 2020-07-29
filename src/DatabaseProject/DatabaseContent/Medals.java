@@ -20,7 +20,6 @@ public class Medals {
         this.medalsStore.put(MedalType.BRONZE, new ArrayList<>());
     }
 
-
     public HashMap<MedalType, ArrayList<Event>> getMedalsStore(){
         return this.medalsStore;
     }
@@ -53,7 +52,6 @@ public class Medals {
         bronzeEvents.forEach(event -> bronzeEventsStrings.add(event.getName()));
         return bronzeEventsStrings;
     }
-
 
     /**Adding a medal to medalStore
      * @param event event where medal was won

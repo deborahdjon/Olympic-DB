@@ -8,20 +8,24 @@
 
 <!--fx:controller="sample.Controller"-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DatabaseProject.DatabaseProgramControl.NewAthleteController">
    <top>
-      <FlowPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <FlowPane hgap="20.0" prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea prefHeight="44.0" prefWidth="420.0" text="Olympic Games Database">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Olympic Games Database">
                <font>
                   <Font size="32.0" />
-               </font></TextArea>
+               </font>
+            </Text>
             <ImageView fitHeight="82.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@1200px-Olympic_Rings.svg.png" />
+                  <Image url="@olympic_rings.png" />
                </image>
             </ImageView>
          </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
       </FlowPane>
    </top>
    <center>
@@ -29,7 +33,7 @@
          <children>
             <ImageView fitHeight="316.0" fitWidth="687.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
                <image>
-                  <Image url="@../runners.jpg" />
+                  <Image url="@runners.jpg" />
                </image>
             </ImageView>
             <AnchorPane prefHeight="316.0" prefWidth="537.0">
@@ -102,7 +106,7 @@
                         </GridPane>
                      </children>
                   </VBox>
-                  <Button layoutX="314.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" text="Main Menu" />
+                  <Button layoutX="314.0" layoutY="252.0" mnemonicParsing="false" onAction="#switchSceneToMainMenu" prefHeight="30.0" prefWidth="78.0" text="Main Menu" />
                   <Button layoutX="19.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" text="Save" textOverrun="CLIP" wrapText="true" />
                </children></AnchorPane>
          </children>

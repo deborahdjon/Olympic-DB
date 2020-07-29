@@ -10,29 +10,26 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-import DatabaseProject.DatabaseProgramControl.SceneSwitcher;
-
-public class MainMenuController {
+public class SceneSwitcher {
 
     @FXML
     public void switchSceneToAthleteSearch(ActionEvent actionEvent) throws Exception{
         switchScene(actionEvent, "DatabaseProject\\AthleteSearch.fxml");
-
     }
+
     @FXML
     public void switchSceneToSportSearch(ActionEvent actionEvent) throws Exception{
         switchScene(actionEvent, "DatabaseProject\\SportSearch.fxml");
-
     }
+
     @FXML
     public void switchSceneToEventSearch(ActionEvent actionEvent) throws Exception{
         switchScene(actionEvent, "DatabaseProject\\EventSearch.fxml");
-
     }
+
     @FXML
     public void switchSceneToOlympicGameSearch(ActionEvent actionEvent) throws Exception{
         switchScene(actionEvent, "DatabaseProject\\OlympicGameSearch.fxml");
-
     }
     @FXML
     public void switchSceneToNewEntry(ActionEvent actionEvent) throws Exception{
@@ -44,21 +41,18 @@ public class MainMenuController {
         switchScene(actionEvent, "DatabaseProject\\NewAthlete.fxml");
     }
 
+
     @FXML
-    protected void switchSceneToTeamSearch(ActionEvent actionEvent) throws Exception{
-        switchScene(actionEvent, "DatabaseProject\\TeamSearch.fxml");
+    protected void switchSceneToMainMenu(ActionEvent actionEvent) throws Exception{
+        switchScene(actionEvent, "DatabaseProject\\MainMenu.fxml");
     }
 
-
-    public void switchScene(ActionEvent actionEvent, String nextPage) throws Exception{
-          Parent athleteSearchView = FXMLLoader.load((Objects.requireNonNull(this.getClass().getClassLoader().getResource(nextPage))));
-          Scene athleteSearchScene = new Scene(athleteSearchView);
-          Stage athleteSearchStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-          athleteSearchStage.setScene(athleteSearchScene);
-          athleteSearchStage.show();
+    protected void switchScene(ActionEvent actionEvent, String nextPage) throws Exception{
+        Parent athleteSearchView = FXMLLoader.load((Objects.requireNonNull(this.getClass().getClassLoader().getResource(nextPage))));
+        Scene athleteSearchScene = new Scene(athleteSearchView);
+        Stage athleteSearchStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        athleteSearchStage.setScene(athleteSearchScene);
+        athleteSearchStage.show();
 
     }
-
-
 }
-
