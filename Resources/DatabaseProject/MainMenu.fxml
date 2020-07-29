@@ -7,7 +7,7 @@
 
 <!--fx:controller="sample.Controller"-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DatabaseProject.DatabaseProgramControl.MainMenuController">
    <top>
       <FlowPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -17,7 +17,7 @@
                </font></TextArea>
             <ImageView fitHeight="82.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../1200px-Olympic_Rings.svg.png" />
+                  <Image url="@../olympic_rings.png" />
                </image>
             </ImageView>
          </children>
@@ -28,7 +28,7 @@
          <children>
             <ImageView fitHeight="316.0" fitWidth="687.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
                <image>
-                  <Image url="@../steven-lelham-atSaEOeE8Nk-unsplash.jpg" />
+                  <Image url="@../runners.jpg" />
                </image>
             </ImageView>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -48,12 +48,12 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" text="Athleten " />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Sportart" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Event" GridPane.rowIndex="2" />
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" text="Olympische Spiele" textAlignment="JUSTIFY" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Teams" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" text="Neues Ergebnis" GridPane.rowIndex="5" />
+                        <Button fx:id="athleteSearchButton" mnemonicParsing="false" onAction="#SwitchSceneToAthleteSearch" prefHeight="26.0" prefWidth="128.0" text="Athleten " />
+                        <Button fx:id="sportSearchButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Sportart" GridPane.rowIndex="1" />
+                        <Button fx:id="eventSearchButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Event" GridPane.rowIndex="2" />
+                        <Button fx:id="olympicGameSearchButton" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" text="Olympische Spiele" textAlignment="JUSTIFY" GridPane.rowIndex="3" />
+                        <Button fx:id="teamSearchButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Teams" GridPane.rowIndex="4" />
+                        <Button fx:id="nerResultButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" text="Neues Ergebnis" GridPane.rowIndex="5" />
                         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" text="Neuer Eintrag" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>

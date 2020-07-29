@@ -12,16 +12,19 @@
    <top>
       <FlowPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea prefHeight="44.0" prefWidth="420.0" text="Olympic Games Database">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Olympic Games Database">
                <font>
-                  <Font size="32.0" />
-               </font></TextArea>
+                  <Font name="System Bold" size="35.0" />
+               </font></Text>
             <ImageView fitHeight="82.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../1200px-Olympic_Rings.svg.png" />
+                  <Image url="@1200px-Olympic_Rings.svg.png" />
                </image>
             </ImageView>
          </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
       </FlowPane>
    </top>
    <center>
@@ -29,7 +32,7 @@
          <children>
             <ImageView fitHeight="316.0" fitWidth="687.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
                <image>
-                  <Image url="@../steven-lelham-atSaEOeE8Nk-unsplash.jpg" />
+                  <Image url="@../runners.jpg" />
                </image>
             </ImageView>
             <AnchorPane prefHeight="316.0" prefWidth="537.0">

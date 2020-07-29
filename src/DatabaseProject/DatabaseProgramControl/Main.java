@@ -1,37 +1,41 @@
-/*
- * Olympic DB
+/** Olympic DB
 
  * This programme was written for a universety project for the informatics Module
  * Programming2 at the DHBW Stuttgart.
  * @author 9537809
  * @version 1.0
-
  */
 package DatabaseProject.DatabaseProgramControl;
 
-import DatabaseProject.DatabaseContent.*;
-import DatabaseProject.DatabaseContentAdmins.Admin;
-import DatabaseProject.DatabaseContentAdmins.AdminAdmin;
-import DatabaseProject.DatabaseControl.Reader;
+
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.util.Objects;
 
 /**
  *Starts the Programme
  * */
 public class Main extends Application {
+    public Main() {
+    }
 
-
-    @Override
     public void start(Stage primaryStage) throws Exception {
-        AdminAdmin adminAdmin = new AdminAdmin();
-        Parent root =  FXMLLoader.load(this.getClass().getResource("MainMenu.fxml"));
+       // AdminAdmin adminAdmin = new AdminAdmin();
+        //FXMLLoader loader = new FXMLLoader(new File("C:\\Users\\debor\\IdeaProjects\\9537809\\Resources\\DatabaseProject\\MainMenu.fxml").toURI().toURL());
+        //Parent root = loader.load();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("DatabaseProject\\MainMenu.fxml")));
+
         primaryStage.setTitle("Olympic Games Database");
         primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }

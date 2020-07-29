@@ -2,6 +2,7 @@
   <configuration default="false" name="Main" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="DatabaseProject.DatabaseProgramControl.Main" />
     <module name="9537809" />
+    <option name="VM_PARAMETERS" value="--module-path C:\Users\debor\IdeaProjects\Libaries\javafx-sdk-11.0.2\lib --add-modules=javafx.controls,javafx.fxml" />
     <RunnerSettings RunnerId="Run" />
     <ConfigurationWrapper RunnerId="Run" />
     <method v="2">

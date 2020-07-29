@@ -18,7 +18,7 @@
                </font></TextArea>
             <ImageView fitHeight="82.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../1200px-Olympic_Rings.svg.png" />
+                  <Image url="@1200px-Olympic_Rings.svg.png" />
                </image>
             </ImageView>
          </children>
@@ -29,7 +29,7 @@
          <children>
             <ImageView fitHeight="316.0" fitWidth="687.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
                <image>
-                  <Image url="@../steven-lelham-atSaEOeE8Nk-unsplash.jpg" />
+                  <Image url="@../runners.jpg" />
                </image>
             </ImageView>
             <AnchorPane prefHeight="316.0" prefWidth="537.0">
