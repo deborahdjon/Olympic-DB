@@ -1,37 +1,41 @@
 package DatabaseProject.DatabaseProgramControl;
 
-import javafx.event.ActionEvent;
+
+
+import DatabaseProject.DatabaseContent.Athlete;
+import DatabaseProject.DatabaseContentAdmins.DataStore;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import java.util.Objects;
+import javax.swing.text.html.ListView;
+import java.awt.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AthleteDetailsController {
-    @FXML
-    public void switchSceneToMainMenu(ActionEvent actionEvent) throws Exception{
-        switchScene(actionEvent, "DatabaseProject\\MainMenu.fxml");
-    }
+public class AthleteDetailsController extends Controller {
+    @FXML Label id;
+    @FXML Label athleteName;
+    @FXML Label athleteAge;
+    @FXML Label athleteHeight;
+    @FXML Label athleteWeight;
+    @FXML Label athleteGender;
+    @FXML ListView goldMedals;
+    @FXML ListView silverMedals;
+    @FXML ListView bronzeMedals;
+    @FXML ListView athleteTeams;
 
-    @FXML
-    public void switchSceneToAthleteSearch(ActionEvent actionEvent) throws Exception{
-        switchScene(actionEvent, "DatabaseProject\\AthleteSearch.fxml");
-    }
+    private Athlete selectedAthlete;
 
-
-
-    public void switchScene(ActionEvent actionEvent, String nextPage) throws Exception{
-        Parent athleteSearchView = FXMLLoader.load((Objects.requireNonNull(this.getClass().getClassLoader().getResource(nextPage))));
-        Scene athleteSearchScene = new Scene(athleteSearchView);
-        Stage athleteSearchStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        athleteSearchStage.setScene(athleteSearchScene);
-        athleteSearchStage.show();
+    public void setSelectedAthlete(Athlete selectedAthlete) {
+        this.selectedAthlete = selectedAthlete;
+        selectedAthlete.getName();
+        this.selectedAthlete.getName();
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initDataStore(this.getDataStore());
 
+    }
 }
 

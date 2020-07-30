@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -7,7 +8,6 @@
 
 <!--fx:controller="sample.Controller"-->
 
-<?import javafx.geometry.Insets?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DatabaseProject.DatabaseProgramControl.AthleteSearchController">
    <top>
       <FlowPane hgap="20.0" prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -47,13 +47,13 @@
                         </Text>
                         <HBox prefHeight="82.0" prefWidth="302.0" spacing="7.0">
                            <children>
-                              <TextField prefHeight="30.0" prefWidth="249.0" />
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" text="Search" />
+                              <TextField fx:id="textFieldAthleteSearch" prefHeight="30.0" prefWidth="249.0" />
+                              <Button mnemonicParsing="false" onAction="#searchAthlete" prefHeight="30.0" prefWidth="107.0" text="Search" />
                            </children>
                         </HBox>
-                        <TableView prefHeight="213.0" prefWidth="283.0">
+                        <TableView fx:id="tableViewAthlete" prefHeight="213.0" prefWidth="283.0">
                           <columns>
-                            <TableColumn prefWidth="293.5999813079834" text="Name" />
+                            <TableColumn fx:id="columnAthleteName" prefWidth="293.5999813079834" text="Name" />
                           </columns>
                         </TableView>
                      </children>

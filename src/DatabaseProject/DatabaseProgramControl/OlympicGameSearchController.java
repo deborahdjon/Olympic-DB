@@ -8,20 +8,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class OlympicGameSearchController {
-    @FXML
-    public void switchSceneToMainMenu(ActionEvent actionEvent) throws Exception{
-        switchScene(actionEvent, "DatabaseProject\\MainMenu.fxml");
-    }
+public class OlympicGameSearchController extends Controller{
 
-    public void switchScene(ActionEvent actionEvent, String nextPage) throws Exception{
-        Parent athleteSearchView = FXMLLoader.load((Objects.requireNonNull(this.getClass().getClassLoader().getResource(nextPage))));
-        Scene athleteSearchScene = new Scene(athleteSearchView);
-        Stage athleteSearchStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        athleteSearchStage.setScene(athleteSearchScene);
-        athleteSearchStage.show();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }

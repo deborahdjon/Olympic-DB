@@ -8,7 +8,9 @@
 
 <!--fx:controller="sample.Controller"-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DatabaseProject.DatabaseProgramControl.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="DatabaseProject.DatabaseProgramControl.MainMenuController">
    <top>
        <FlowPane hgap="20.0" prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
            <children>
