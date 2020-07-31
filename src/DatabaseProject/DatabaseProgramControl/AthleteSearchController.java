@@ -56,20 +56,20 @@ public class AthleteSearchController extends Controller{
         Scene nextScene = new Scene(nextView);
 
         AthleteDetailsController athleteDetailsController = loader.getController();
-        athleteDetailsController.initDataStore(this.getDataStore());
         Athlete selectedAthlete = tableViewAthlete.getSelectionModel().getSelectedItem();
+        athleteDetailsController.setSelectedAthlete(selectedAthlete);
+        athleteDetailsController.initDataStore(this.getDataStore());
+        athleteDetailsController.initData();
 
-        athleteDetailsController.id.setText(selectedAthlete.getId().toString());
-        athleteDetailsController.athleteName.setText(selectedAthlete.getName());
-        athleteDetailsController.athleteAge.setText(selectedAthlete.getAge().toString());
-        athleteDetailsController.athleteHeight.setText(selectedAthlete.getHeight().toString());
-        athleteDetailsController.athleteWeight.setText(selectedAthlete.getWeight().toString());
-        athleteDetailsController.athleteGender.setText(selectedAthlete.getGender());
+
+
 
         Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         nextStage.setScene(nextScene);
         nextStage.show();
     }
+
+
 
 
 }

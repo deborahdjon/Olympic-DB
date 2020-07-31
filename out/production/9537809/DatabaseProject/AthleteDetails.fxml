@@ -66,7 +66,7 @@
                                           <Font name="System Bold Italic" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="32.0" prefWidth="43.0" text="Label" textFill="WHITE" GridPane.columnIndex="1">
+                                    <Label fx:id="id" prefHeight="32.0" prefWidth="43.0" text="Label" textFill="WHITE" GridPane.columnIndex="1">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -76,7 +76,7 @@
                                           <Font name="System Bold Italic" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="athleteName" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -86,7 +86,7 @@
                                           <Font name="System Bold Italic" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Label fx:id="athleteAge" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -96,12 +96,12 @@
                                           <Font name="System Bold Italic" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Label fx:id="athleteHeight" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <Label fx:id="athleteWeight" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -111,7 +111,7 @@
                                           <Font name="System Bold Italic" size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                    <Label fx:id="athleteGender" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
