@@ -40,7 +40,7 @@
                <children>
                   <VBox layoutX="19.0" prefHeight="240.0" prefWidth="283.0" spacing="10.0">
                      <children>
-                        <Text fill="WHITE" stroke="WHITE" strokeLineCap="BUTT" text="Seacrh Athletes" wrappingWidth="197.76171875">
+                        <Text fill="WHITE" stroke="WHITE" strokeLineCap="BUTT" text="Search Athletes" wrappingWidth="197.76171875">
                            <font>
                               <Font size="21.0" />
                            </font>

@@ -1,9 +1,7 @@
 package DatabaseProject.DatabaseProgramControl;
 
 import DatabaseProject.DatabaseContent.Athlete;
-import DatabaseProject.DatabaseContent.DatabaseContent;
 import DatabaseProject.DatabaseContentAdmins.Admin;
-import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,8 +41,13 @@ public class AthleteSearchController extends Controller{
     /**Function for finding and displaying athletes in the view.*/
     public void searchAthlete(){
         String searchString = textFieldAthleteSearch.getText();
-        ObservableList results = athleteAdmin.searchByName(searchString,  athleteAdmin.getStorage());
-        tableViewAthlete.setItems(results);
+
+        if(searchString.isBlank()){
+            warnEmptyField();
+        }else {
+            ObservableList results = athleteAdmin.searchByName(searchString,  athleteAdmin.getStorage());
+            tableViewAthlete.setItems(results);
+        }
     }
 
     /** Function for navigating to the AthleteDetails page.
@@ -60,9 +64,6 @@ public class AthleteSearchController extends Controller{
         athleteDetailsController.setSelectedAthlete(selectedAthlete);
         athleteDetailsController.initDataStore(this.getDataStore());
         athleteDetailsController.initData();
-
-
-
 
         Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         nextStage.setScene(nextScene);

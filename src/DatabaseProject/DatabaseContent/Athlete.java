@@ -2,12 +2,15 @@ package DatabaseProject.DatabaseContent;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
+
+import static javafx.collections.FXCollections.observableList;
 
 public class Athlete extends DatabaseContent{
     private SimpleIntegerProperty id; //TODO change to String ??
@@ -55,6 +58,12 @@ public class Athlete extends DatabaseContent{
     }
     public void addTeam(Team newTeam){//TODO: throw exception for invalid input
         this.teams.add(newTeam); }
+
+    public ObservableList<String> getTeamsNamesList(){
+        ArrayList<String> teamNames = new ArrayList<>();
+        this.teams.forEach(team -> teamNames.add(team.getName()));
+        return observableList(teamNames);
+    }
 
     public Medals getMedals(){return this.medals;}
 

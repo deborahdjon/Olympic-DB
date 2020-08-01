@@ -1,7 +1,13 @@
 package DatabaseProject.DatabaseContent;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static javafx.collections.FXCollections.observableList;
+
 /**Class that stores the medals of an athlete.*/
 public class Medals {
     /**Stores medals.*/
@@ -29,28 +35,39 @@ public class Medals {
 
     /**Puts the gold medal event names into a string array for display in the user interface.
      * @return List of event names where athlete won gold.*/
-    public ArrayList<String> getGoldString(){
+    public ObservableList<String> getGoldMedalsList(){
         ArrayList<Event> goldEvents = getGold();
         ArrayList<String> goldEventsStrings = new ArrayList<>();
         goldEvents.forEach(event -> goldEventsStrings.add(event.getName()));
-        return goldEventsStrings;
+
+        if(goldEventsStrings.size()==0){
+            goldEventsStrings.add("NA");
+        }
+        return FXCollections.observableList(goldEventsStrings);
     }
 
     /**Puts the silver medal event names into a string array for display in the user interface.
      * @return List of event names where athlete won silver.*/
-    public ArrayList<String> getSilverString(){
+    public ObservableList<String> getSilverMedalsList(){
         ArrayList<Event> silverEvents = getSilver();
         ArrayList<String> silverEventsStrings = new ArrayList<>();
         silverEvents.forEach(event -> silverEventsStrings.add(event.getName()));
-        return silverEventsStrings;
+        if(silverEventsStrings.size()==0){
+            silverEventsStrings.add("NA");
+        }
+        return observableList(silverEventsStrings);
     }
     /**Puts the bronze medal event names into a string array for display in the user interface.
      * @return List of event names where athlete won bronze.*/
-    public ArrayList<String> getBronzeString(){
+    public ObservableList<String> getBronzeMedalsList(){
         ArrayList<Event> bronzeEvents = getBronze();
         ArrayList<String> bronzeEventsStrings = new ArrayList<>();
         bronzeEvents.forEach(event -> bronzeEventsStrings.add(event.getName()));
-        return bronzeEventsStrings;
+
+        if(bronzeEventsStrings.size()==0){
+            bronzeEventsStrings.add("NA");
+        }
+        return observableList(bronzeEventsStrings);
     }
 
     /**Adding a medal to medalStore
